@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditi Jain — Data Scientist</title>
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0e0e11;
+      --surface: #16161a;
+      --border: #2a2a32;
+      --accent: #7c6af7;
+      --accent2: #c084fc;
+      --text: #e8e8f0;
+      --muted: #888899;
+      --card: #1c1c22;
+      --radius: 14px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Nav ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(14, 14, 17, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-name {
+      font-weight: 700;
+      font-size: 1rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ─── Hero ─── */
+    .hero {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+    }
+
+    .hero-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(124, 106, 247, 0.4);
+      box-shadow: 0 0 0 6px rgba(124, 106, 247, 0.08);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 8vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(124, 106, 247, 0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 28px rgba(124, 106, 247, 0.5);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover {
+      background: var(--surface);
+      color: var(--text);
+      border-color: var(--muted);
+    }
+
+    /* ─── Social Row ─── */
+    .social-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.65rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .social-link:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: rgba(124, 106, 247, 0.08);
+    }
+    .social-link svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    /* ─── Divider ─── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* ─── Sections ─── */
+    section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ─── About ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .about-story p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      animation: fadeUp 0.65s ease forwards;
+    }
+    .about-story p:nth-child(1) { animation-delay: 0.1s; }
+    .about-story p:nth-child(2) { animation-delay: 0.28s; }
+    .about-story p:nth-child(3) { animation-delay: 0.46s; }
+    .about-story p:last-child { margin-bottom: 0; }
+
+    .about-story .highlight { color: var(--text); font-weight: 600; }
+
+    .about-story .accent-word {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    .about-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2rem;
+      opacity: 0;
+      animation: fadeIn 0.65s ease 0.6s forwards;
+    }
+
+    .about-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.4rem 1rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .about-chip:hover {
+      border-color: rgba(124, 106, 247, 0.4);
+      color: var(--text);
+      background: rgba(124, 106, 247, 0.06);
+    }
+
+    /* ─── Articles ─── */
+    .articles-row {
+      display: flex;
+      gap: 1.25rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .articles-row::-webkit-scrollbar { height: 4px; }
+    .articles-row::-webkit-scrollbar-track { background: var(--border); border-radius: 99px; }
+    .articles-row::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 99px; }
+
+    .article-card {
+      flex: 0 0 calc((100% - 2 * 1.25rem) / 3);
+      scroll-snap-align: start;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+      background: var(--card);
+    }
+    .article-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.4);
+      border-color: rgba(124, 106, 247, 0.35);
+    }
+
+    .article-thumb {
+      height: 160px;
+      overflow: hidden;
+    }
+
+    .article-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .article-card:hover .article-thumb img {
+      transform: scale(1.05);
+    }
+
+    .article-body {
+      padding: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    .article-source {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+    }
+
+    .article-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .article-cta {
+      font-size: 0.78rem;
+      color: var(--accent2);
+      font-weight: 600;
+      margin-top: auto;
+      padding-top: 0.5rem;
+    }
+
+    /* ─── Skills ─── */
+    .skills-group {
+      margin-bottom: 1.75rem;
+    }
+
+    .skills-group-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.3rem 0.85rem;
+      font-size: 0.8rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .tag.accent {
+      background: rgba(124, 106, 247, 0.1);
+      border-color: rgba(124, 106, 247, 0.3);
+      color: var(--accent2);
+    }
+
+    /* ─── Experience Timeline ─── */
+    .timeline {
+      position: relative;
+      padding-left: 1.75rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 6px;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -1.75rem;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(124, 106, 247, 0.2);
+    }
+
+    .timeline-dot.current {
+      background: var(--accent2);
+      box-shadow: 0 0 0 3px rgba(192, 132, 252, 0.25), 0 0 12px rgba(192, 132, 252, 0.4);
+    }
+
+    .timeline-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.35rem;
+      flex-wrap: wrap;
+    }
+
+    .timeline-role {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .timeline-date {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 500;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    .timeline-company {
+      font-size: 0.85rem;
+      color: var(--accent2);
+      font-weight: 600;
+      margin-bottom: 0.65rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ─── Projects ─── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .project-card:hover {
+      border-color: rgba(124, 106, 247, 0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .project-card.coming-soon {
+      border-style: dashed;
+      opacity: 0.6;
+    }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .project-status {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      letter-spacing: 0.5px;
+    }
+
+    .status-ongoing {
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      color: #fbbf24;
+    }
+
+    .status-done {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #22c55e;
+    }
+
+    .status-soon {
+      background: rgba(148, 163, 184, 0.1);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      color: var(--muted);
+    }
+
+    .project-title {
+      font-size: 0.975rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .project-desc {
+      font-size: 0.825rem;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .project-tag {
+      font-size: 0.72rem;
+      background: rgba(124, 106, 247, 0.08);
+      border: 1px solid rgba(124, 106, 247, 0.2);
+      color: var(--accent2);
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      font-weight: 500;
+    }
+
+    /* ─── Speaking ─── */
+    .speaking-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .speaking-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .speaking-item:hover {
+      border-color: rgba(124, 106, 247, 0.4);
+      background: rgba(124, 106, 247, 0.04);
+      transform: translateX(4px);
+    }
+    .speaking-item .arrow {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      align-self: center;
+      transition: color 0.2s;
+    }
+    .speaking-item:hover .arrow { color: var(--accent2); }
+
+    .speaking-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .speaking-role {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .speaking-title {
+      font-size: 0.925rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+
+    .speaking-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ─── Contact ─── */
+    .contact-section {
+      text-align: center;
+      padding: 5rem 1.5rem;
+    }
+
+    .contact-card {
+      max-width: 560px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.25rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+    .contact-link:hover {
+      border-color: var(--accent);
+      background: rgba(124, 106, 247, 0.07);
+    }
+    .contact-link svg { width: 18px; height: 18px; color: var(--muted); flex-shrink: 0; }
+    .contact-link span { color: var(--muted); font-size: 0.82rem; margin-left: auto; }
+
+    /* ─── Footer ─── */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+
+      .nav-links { gap: 1rem; }
+      .nav-links li:nth-child(3),
+      .nav-links li:nth-child(4) { display: none; }
+
+      .hero { padding: 3.5rem 1rem 3rem; }
+
+      .about-grid { grid-template-columns: 1fr; }
+
+      .article-card { flex: 0 0 calc(100vw - 3rem); }
+
+      .projects-grid { grid-template-columns: 1fr; }
+
+      .timeline-header { flex-direction: column; gap: 0.2rem; }
+
+      .contact-card { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <span class="nav-name">aditi jain</span>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#articles">writing</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#speaking">speaking</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <img src="assets/aditi.jpg" alt="Aditi Jain" class="hero-avatar" />
+    <h1>Heyy! I'm <span>Aditi.</span></h1>
+    <p class="hero-sub">
+      Data Scientist<br>I turn research into production.
+    </p>
+    <div class="hero-buttons">
+      <a href="resume.pdf" class="btn btn-primary" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        View Resume
+      </a>
+      <a href="#contact" class="btn btn-ghost">Say hello →</a>
+    </div>
+
+    <div class="social-row">
+      <a href="https://www.linkedin.com/in/aditijan1100/" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://x.com/Aditijain1100" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        Twitter / X
+      </a>
+      <a href="mailto:aditijain1100@gmail.com" class="social-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+    </div>
+  </header>
+
+  <div class="divider"></div>
+
+  <!-- About -->
+  <section id="about">
+    <p class="section-label">about me</p>
+    <h2 class="section-title">About me</h2>
+    <div class="about-story">
+      <p>
+        Hi, I'm Aditi Jain.<br><br>
+        I'm a <span class="highlight">Data Scientist at Tata 1mg</span>,
+        started out as a backend engineer with a knack for building stuff from the ground up. I've always loved getting my hands dirty
+        lately that's meant <span class="accent-word">data projects and playing around with AI</span>.
+        I like experimenting, tinkering until it works (even if it's a bit rough around the edges),
+        and I'm dipping my toes into <span class="highlight">freelancing</span> these days.
+      </p>
+
+      <div class="about-chips">
+        <span class="about-chip">🏥 Tata 1mg</span>
+        <span class="about-chip">🤖 GenAI & LLMs</span>
+        <span class="about-chip">🔍 Search Sciences</span>
+        <span class="about-chip">⚙️ Backend roots</span>
+        <span class="about-chip">📊 A/B Experimentation</span>
+        <span class="about-chip">🎤 Community speaker</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Articles -->
+  <section id="articles">
+    <p class="section-label">writing</p>
+    <h2 class="section-title">Articles & posts</h2>
+    <div class="articles-row">
+
+      <a class="article-card" href="https://www.linkedin.com/posts/aditijan1100_dataanalysis-eda-productanalytics-share-7444669671611748352-qykq" target="_blank">
+        <div class="article-thumb"><img src="assets/articles/img-eda.jpg" alt="EDA & Product Analytics" /></div>
+        <div class="article-body">
+          <span class="article-source">LinkedIn</span>
+          <div class="article-title">EDA & Product Analytics — what the data actually tells you</div>
+          <span class="article-cta">Read post ↗</span>
+        </div>
+      </a>
+
+      <a class="article-card" href="https://www.linkedin.com/posts/aditijan1100_ai-anthropic-research-share-7435692391002583040-F8qy" target="_blank">
+        <div class="article-thumb"><img src="assets/articles/img-anthropic.jpg" alt="AI & Anthropic Research" /></div>
+        <div class="article-body">
+          <span class="article-source">LinkedIn</span>
+          <div class="article-title">AI & Anthropic Research — my take</div>
+          <span class="article-cta">Read post ↗</span>
+        </div>
+      </a>
+
+      <a class="article-card" href="https://medium.com/@aditijain1100/multitenancy-for-dummies-cb4a02b66916" target="_blank">
+        <div class="article-thumb"><img src="assets/articles/img-multitenancy.jpg" alt="Multitenancy for Dummies" /></div>
+        <div class="article-body">
+          <span class="article-source">Medium</span>
+          <div class="article-title">Multitenancy for Dummies</div>
+          <span class="article-cta">Read article ↗</span>
+        </div>
+      </a>
+
+      <a class="article-card" href="https://medium.com/@aditijain1100/demystifying-reinforcement-learning-62f561ba5c35" target="_blank">
+        <div class="article-thumb"><img src="assets/articles/img-rl.jpg" alt="Demystifying Reinforcement Learning" /></div>
+        <div class="article-body">
+          <span class="article-source">Medium</span>
+          <div class="article-title">Demystifying Reinforcement Learning</div>
+          <span class="article-cta">Read article ↗</span>
+        </div>
+      </a>
+
+      <a class="article-card" href="https://medium.com/@aditijain1100/multi-arm-bandit-exploration-vs-exploitation-56150840b2ab" target="_blank">
+        <div class="article-thumb"><img src="assets/articles/img-bandit.jpg" alt="Multi-arm Bandit" /></div>
+        <div class="article-body">
+          <span class="article-source">Medium</span>
+          <div class="article-title">Multi-arm Bandit: Exploration vs Exploitation</div>
+          <span class="article-cta">Read article ↗</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Experience -->
+  <section id="experience">
+    <p class="section-label">experience</p>
+    <h2 class="section-title">Where I've worked</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot current"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">Data Scientist - 1</span>
+          <span class="timeline-date">Sep 2025 — Present</span>
+        </div>
+        <div class="timeline-company">Tata 1mg · Homepage & Search Sciences, GenAI</div>
+        <p class="timeline-desc">
+          Engineered an external report digitisation pipeline using an in-house VLM, scaling to ~7 lakh reports. Built a benchmarking framework across Gemini 2.5 Flash, GPT-o3, GPT-4o, and more — driving production model selection. Currently leading Search-to-Cart A/B experiments via Mixpanel & GA.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">Backend Engineer</span>
+          <span class="timeline-date">Jan 2024 — Sep 2025</span>
+        </div>
+        <div class="timeline-company">Tata 1mg · AI Health Assistant</div>
+        <p class="timeline-desc">
+          Built the health assistant chatbot backend from scratch — 6 chat flows, session management, and a 4-stage AI-driven doctor consultation flow. Drove 2× daily footfall growth (1,000 → 2,000/day) post-launch.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">Software Development Intern</span>
+          <span class="timeline-date">Jun 2023 — Aug 2023</span>
+        </div>
+        <div class="timeline-company">Essentia Dev</div>
+        <p class="timeline-desc">
+          Built 3–4 travel booking UI pages. Implemented multi-tenancy by restructuring database tables, cutting replication costs by 75%. Only intern to have work published on the company blog.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">Technical Intern</span>
+          <span class="timeline-date">Aug 2022 — Sep 2022</span>
+        </div>
+        <div class="timeline-company">Indraprastha Gas Limited</div>
+        <p class="timeline-desc">
+          Built a web portal to digitise gatepass procedures using Java web forms, monitoring ingress and egress of office materials. Used iText to generate invoices for transferred items and digitised 1,000+ forms.
+        </p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-role">Blockchain Research Intern</span>
+          <span class="timeline-date">Jul 2021 — Aug 2021</span>
+        </div>
+        <div class="timeline-company">GAIL (India) Limited</div>
+        <p class="timeline-desc">
+          Engineered a blockchain ledger for transparent gasoline transportation. Deployed 4 Solidity smart contracts on Rinkeby and presented proof-of-concept to a team of professionals at GAIL.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Projects -->
+  <section id="projects">
+    <p class="section-label">projects</p>
+    <h2 class="section-title">Things I've built</h2>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-top">
+          <span class="project-status status-done">Completed</span>
+        </div>
+        <div class="project-title">Prescription QnA System</div>
+        <p class="project-desc">
+          Built a structured extraction pipeline for medical entities from prescriptions, integrated with LLMs for context-aware responses and hallucination minimisation.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Healthcare NLP</span>
+          <span class="project-tag">GenAI</span>
+          <span class="project-tag">RAG</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-top">
+          <span class="project-status status-done">Completed</span>
+        </div>
+        <div class="project-title">Email Tagging</div>
+        <p class="project-desc">
+          N8N workflow that automates job update labeling for Gmail. It triggers on new emails, uses Google Gemini to classify them as job-related and adds labels respectively
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">YOLOv7</span>
+          <span class="project-tag">Medical Imaging</span>
+          <span class="project-tag">Deep Learning</span>
+        </div>
+      </div>
+
+      <div class="project-card coming-soon">
+        <div class="project-top">
+          <span class="project-status status-soon">Coming Soon</span>
+        </div>
+        <div class="project-title">More projects dropping...</div>
+        <p class="project-desc">
+          Currently building. Check back soon or follow me on X for updates.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Stay tuned</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Speaking -->
+  <section id="speaking">
+    <p class="section-label">speaking & community</p>
+    <h2 class="section-title">Where I've shown up</h2>
+
+    <div class="speaking-list">
+
+      <a class="speaking-item" href="https://www.linkedin.com/posts/aditijan1100_microsoft-ai-azurecommunity-ugcPost-7401570344362569728-Svev" target="_blank">
+        <span class="speaking-icon">🎙️</span>
+        <div>
+          <div class="speaking-role">Speaker</div>
+          <div class="speaking-title">Microsoft India Sovereign · Azure Developer Community</div>
+          <p class="speaking-desc">Delivered "All About AI" — a talk on LLMs and AI in healthcare to IIMT University students.</p>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+
+      <a class="speaking-item" href="https://www.linkedin.com/posts/aditijan1100_internationalwomensday-innovation-womeninstem-ugcPost-7436715472764563456-pAXz" target="_blank">
+        <span class="speaking-icon">👩‍💼</span>
+        <div>
+          <div class="speaking-role">Panelist</div>
+          <div class="speaking-title">IEEE WIE JSSATEN × WIEJSSUN — Women's Day Panel</div>
+          <p class="speaking-desc">Spoke on collaborative problem solving and women in tech, sharing applied AI work from Tata 1mg.</p>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+
+      <a class="speaking-item" href="https://www.linkedin.com/posts/aditijan1100_my-first-realisation-when-i-became-a-data-ugcPost-7424535077705134080-Qb39" target="_blank">
+        <span class="speaking-icon">🧑‍🏫</span>
+        <div>
+          <div class="speaking-role">Guest Lecturer</div>
+          <div class="speaking-title">EMPI Business School</div>
+          <p class="speaking-desc">Delivered a session on Market Analytics & Customer Insights with a hands-on data-driven campaign activity.</p>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+
+      <a class="speaking-item" href="https://www.linkedin.com/posts/aditijan1100_aiforpublicgood-netwebhackathon-mentorship-ugcPost-7416938384268431361-zK2K" target="_blank">
+        <span class="speaking-icon">🚀</span>
+        <div>
+          <div class="speaking-role">Mentor</div>
+          <div class="speaking-title">India AI Impact Summit 2026 — IDEATRON (Netweb Initiative)</div>
+          <p class="speaking-desc">Mentored teams building AI solutions across healthcare, agriculture, and education.</p>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+
+      <a class="speaking-item" href="https://www.linkedin.com/posts/aditijan1100_what-an-incredible-week-got-to-judge-ugcPost-7391400029158293504-t1WD" target="_blank">
+        <span class="speaking-icon">⚖️</span>
+        <div>
+          <div class="speaking-role">Judge</div>
+          <div class="speaking-title">SnapAR Hackathon by BharatXR (Snap Inc.)</div>
+          <p class="speaking-desc">Evaluated AR projects built by college students.</p>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Contact -->
+  <section id="contact" class="contact-section">
+    <p class="section-label">contact</p>
+    <h2 class="section-title" style="margin-bottom: 1.5rem;">Let's connect</h2>
+    <div class="contact-card">
+      <p>Whether it's a collab, a talk invite, or just a good ML conversation — my inbox is open.</p>
+      <div class="contact-links">
+        <a href="mailto:aditijain1100@gmail.com" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          aditijain1100@gmail.com
+          <span>Email ↗</span>
+        </a>
+        <a href="https://www.linkedin.com/in/aditijan1100/" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin.com/in/aditijan1100
+          <span>LinkedIn ↗</span>
+        </a>
+        <a href="https://x.com/Aditijain1100" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          @Aditijain1100
+          <span>Twitter / X ↗</span>
+        </a>
+        <a href="resume.pdf" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Download Resume
+          <span>PDF ↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Built with care · Aditi Jain © 2026</p>
+  </footer>
+
+</body>
+</html>
